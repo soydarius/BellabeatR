@@ -1,0 +1,153 @@
+---
+title: "Capstone Project in R"
+output: html_notebook
+---
+
+<span style="color:#FA8072">Capstone Project in R - Bellabeat (Darius)</span>
+This project is parte of the [Google Data Analytics Certificate Program.](https://grow.google/certificates/data-analytics/)
+
+A 176 hours program hosted on Coursera. Fully online program that provides all the skills you need to find an entry-level job in the field of data analytics. The program includes content on
+
+* Data types and structures
+* Using data to solve problems
+* How to analyze data
+* Data storytelling with visualizations
+* Using R programming to supercharge your analysis.
+
+
+## <span style="color:#FA8072"> Table of Contents </span>
+
+* [1. Summary](#summary_1)
+* [2. Ask Phase](#ask_phase_2)
+    * [2.1 Business Task](#business_task_2_1)
+* [3. Prepare Phase](#prepare_phase_3)
+    * [3.1 Dataset used](#dataset_used_3_1)
+    * [3.2 Accessibility and privacy of data](#accessibility_and_privacy_of_data_3_2)
+    * [3.3 Data organization and verification](#data_organization_and_verification_3_3)
+    * [3.4 Data credibility and integrity](#data_credibility_and_integrity_3_4)
+* [4. Process Phase](#process_phase_4)
+    * [4.1 Installing packages and opening         libraries](#installing_packages_and_opening_libraries_4_1)
+    * [4.2 Importing datasets](#importing_datasets_4_2)
+    * [4.3 Preview our datasets](#preview_our_datasets_4_3)
+    * [4.4 Cleaning and formatting](#cleaning_and_formatting_4_4)
+    * [4.5 Merging datasets](#merging_datasets_4_5)
+* [5. Analyze and Share Phase](#analyze_phase_5)
+    * [5.1 Type of users per activity level](#type_of_users_per_activity_level)
+    * [5.2 Steps and minutes asleep per weekday](#steps_and_minutes_asleep_per_weekday)
+    * [5.3 Hourly steps throughout the day](#hourly_steps_throughout_the_day)
+    * [5.4 Correlations](#correlations)
+    * [5.5 Use of smart device](#use_of_smart_device)
+        * [5.5.1 Days used smart device](#days_used_smart_device)
+        * [5.5.2 Time used smart device per day](#time_used_smart_device)
+* [6. Conclusion (Act Phase)](#conclusion_act_phase)
+    
+
+# <span style="color:#FA8072"> 1.Summary </span> <a class="anchor" id="summary_1"></a>
+Bella beat is a high-tech company that manufactures health-focused smart products, they develop beautifully designed tech that informs and inspires women around the world, through tracking of daily activity such as sleep, stress, and reproductive health. The company was founded in 2013.
+
+# <span style="color:#FA8072"> 2.Ask Phase </span> <a class="anchor" id="ask_phase_2"></a>
+
+#### 2.1 Business Task <a class="anchor" id="business_task_2_1"></a>
+
+Search for activity and sleep data to gain growth opportunities in the fitness tracking market.
+
+Stakeholders
+
+* Urška Sršen (Bellabeat’s cofounder and CEO)
+* Sando Mur (Cofounder / Executive team)
+* Bellabeat Marketing Analytics Team.
+
+## <span style="color:#FA8072"> 3. Prepare Phase </span> <a class="anchor" id="prepare_phase_3"></a>
+
+#### 3.1 Datasets used: <a class="anchor" id="dataset_used_3_1"></a>
+
+from Fitabase Data
+
+* sleepdata
+* dailyActivity_merged
+* weightLogInfo_merged
+
+#### 3.2 Accesibility and privacy of data:  <a class="anchor" id="accesibility_and_privacy_of_data_3_2"></a>
+The data was provided in a folder with 18 CSV documents by Coursera. Each one of them
+represents quantitative data tracked by Fitbit.
+
+# Data Organization and Verification: <a class="anchor" id="data_organization_and_verification_3_3"></a>
+
+| Table Name | Type | Description |
+| --- | --- | --- |
+| dailyActivity_merged | Microsoft Excel CSV | Daily Activity over 31 days of 33 users. Tracking daily: Steps, Distance, Intensities, Calories |
+|dailyCalories_merged | Microsoft Excel CSV | Daily Calories over 31  days of 33 users |
+| dailyIntensities_merged | Microsoft Excel CSV | Daily Intensity over 31 days of 33 users. Measured in Minutes and Distance, dividing groups in 4 categories: Sedentary, Lightly Active, Fairly Active,Very Active |
+| dailySteps_merged | Microsoft Excel CSV | Daily Steps over 31 days of 33 users | 
+| heartrate_seconds_merged | Microsoft Excel CSV | Exact day and time heartrate logs for just 7 users |
+| hourlyCalories_merged | Microsoft Excel CSV | Hourly Calories burned over 31 days of 33 users |
+| hourlyIntensities_merged | Microsoft Excel CSV | Hourly total and average intensity over 31 days of 33 users |
+| hourlySteps_merged | Microsoft Excel CSV | Hourly Steps over 31 days of 33 users |
+| minuteCaloriesNarrow_merged | Microsoft Excel CSV | Calories burned every minute over 31 days of 33 users (Every minute in single row)|
+| minuteCaloriesWide_merged | Microsoft Excel CSV | Calories burned every minute over 31 days of 33 users (Every minute in single column)|
+| minuteIntensitiesNarrow_merged | Microsoft Excel CSV | Intensity counted by minute over 31 days of 33 users (Every minute in single row) |
+| minuteIntensitiesWide_merged | Microsoft Excel CSV | Intensity counted by minute over 31 days of 33 users (Every minute in single column)|
+| minuteMETsNarrow_merged | Microsoft Excel CSV | Ratio of the energy you are using in a physical activity compared to the energy you would use at rest. Counted in minutes |
+| minuteSleep_merged | Microsoft Excel CSV | Log Sleep by Minute for 24 users over 31 days. Value column not specified |
+| minuteStepsNarrow_merged | Microsoft Excel CSV | Steps tracked every minute over 31 days of 33 users (Every minute in single row)|
+| minuteStepsWide_merged | Microsoft Excel CSV | Steps tracked every minute over 31 days of 33 users (Every minute in single column) |
+| sleepDay_merged | Microsoft Excel CSV| Daily sleep logs, tracked by: Total count of sleeps a day, Total minutes, Total Time in Bed |
+| weightLogInfo_merged | Microsoft Excel CSV | Weight track by day in Kg and Pounds over 30 days. Calculation of BMI.5 users report weight manually 3 users not.In total there are 8 users |
+
+#### 3.4 Data Credibility and Integrity:<a class="anchor" id="data_credibility_and_integrity_3_4"></a>
+
+A sampling bias could be happening due the limited number of its size (30 users), also we are not sure if the sample is representative of the population as a whole. Another problem is that the dataset isn't recent and the duration of the survey was limited to 2 months.
+For the purposes of this course we will perform this analysis for educational purposes only.
+
+# <span style="color:#FA8072"> 4. Process Phase </span> <a class="anchor" id="process_phase_4"> </a>
+Data processsing, analysis and visualization will all be done in R Programming with R Studio.
+
+#### 4.1 Installing packages and opening libraries: <a class="anchor" id=installing_packages_and_opening_libraries_4_1"></a>
+
+We will be using the following packages for our analysis:
+
+```{r}
+library(tidyverse)
+library(skimr)
+library(janitor)
+library(viridis)
+library(scales)
+library(waffle)
+library(here)
+library(lubridate)
+library(ggrepel)
+library(plotly)
+library(RColorBrewer)
+```
+
+#### 4.2 Importing datasets: <a class="anchor" id=importing_datasets_4_2"></a>
+The following tables will be used:
+
+| Table Name | Type | Description |
+| --- | --- | --- |
+| 1. dailyActivity_merged | Microsoft Excel CSV | Daily Activity over 31 days of 33 IDs. Tracking daily: Steps, Distance, Intensities, Calories |
+| 2. sleepdata | Microsoft Excel CSV | Weight and BMI logs of 33 IDs |
+| 3. dailySteps_merged | Microsoft Excel CSV | Daily steps over 31 days of 33 IDs |
+| 4. weightLogInfo_merged | Microsoft Excel CSV | Weight and BMI logs of 33 IDs |
+
+```{r}
+daily_activity <- read.csv("dailyActivity_merged.csv", header = TRUE, sep = ",")
+sleep_day<- read.csv("sleepdata.csv", header = TRUE, sep = ",")
+daily_steps<- read.csv("dailySteps_merged.csv", header = TRUE, sep = ",")
+weight_log<- read.csv("weightLogInfo_merged.csv", header = TRUE, sep = ",")
+```
+
+#### 4.3 Preview our datasets: <a class="anchor" id=preview_datasets_4_3"></a>
+```{r}
+#Preview of the datasets we'll be using
+
+head(daily_activity,5)
+head(sleep_day,5)
+head(daily_steps, 5)
+head(weight_log,5)
+```
+
+#### 4.4 Cleaning and formatting <a class="anchor" id=preview_datasets_4_4"></a>
+We've got our data, now will process them to look for possible errors or discrepancies.
+
+##### 4.4.1 Verifying number of users
